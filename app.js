@@ -8,6 +8,7 @@ app.use(favicon(__dirname + "/public/images/favicon.ico"));
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.use("/assets", express.static(__dirname + "/public"));
 
 app.listen(port, (req, res) => {
   console.log(`listening on ${port}`);
