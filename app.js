@@ -21,11 +21,8 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about");
 });
-app.get("reading-list", (req, res) => {
+app.get("/reading-list", (req, res) => {
   res.render("reading-list");
-});
-app.get("projects", (req, res) => {
-  res.render("projects");
 });
 app.get("/life-together-calculator", (req, res) => {
   res.render("life-together-calculator");
