@@ -28,6 +28,6 @@ app.get("/life-together-calculator", (req, res) => {
   res.render("life-together-calculator");
 });
 
-app.listen(port, (req, res) => {
+app.listen(port, process.env.IP, (req, res) => {
   console.log(`listening on ${port}`);
 });
