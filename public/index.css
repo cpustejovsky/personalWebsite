@@ -22,7 +22,28 @@ hr {
 .homepage__text {
   padding: 3%;
 }
+.social-icon {
+  font-size: 1.33333em;
+}
 
 .green {
   color: green;
+}
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.fraction {
+  width: fit-content;
+}
+
+.fraction hr {
+  border-top: 2px solid #000000;
+  margin: 0;
 }
