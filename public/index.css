@@ -38,12 +38,3 @@ hr {
 .bold {
   font-weight: bold;
 }
-
-.fraction {
-  width: fit-content;
-}
-
-.fraction hr {
-  border-top: 2px solid #000000;
-  margin: 0;
-}
