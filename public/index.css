@@ -29,6 +29,9 @@ hr {
 .green {
   color: green;
 }
+.red {
+  color: red;
+}
 
 .checklist {
   list-style: none;
