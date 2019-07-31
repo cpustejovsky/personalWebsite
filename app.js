@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const favicon = require("serve-favicon");
-const port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 const moment = require("moment");
 
 app.set("view engine", "ejs");
@@ -28,6 +28,13 @@ app.get("/life-together-calculator", (req, res) => {
   res.render("life-together-calculator");
 });
 
-app.listen(port, process.env.IP, (req, res) => {
-  console.log(`listening on ${port}`);
-});
+app
+  .listen(port, () => {
+    console.log(`Personal website listening on port ${port}!`);
+  })
+  .on("error", function helperFunction() {
+    port += 1;
+    app.listen(port, () => {
+      console.log(`Personale website listening on port ${port}!`);
+    });
+  });
