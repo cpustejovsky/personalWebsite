@@ -45,7 +45,9 @@ app.get("/test-route3", (req, res) => {
     "I can spend hours coding or learning about development without getting bored. My frustrations increase my resolve and determination to find a solution. My wife will tell me, “come to bed” and I’ll respond “just a few more minutes.” The only thing that has ever done that for me is… video games. Programming is the only thing I’ve found that competes with video games for my attention."
   );
 });
-
+app.get("/*", (req, res) => {
+  res.render("index");
+});
 app
   .listen(port, () => {
     console.log(`Personal website listening on port ${port}!`);
