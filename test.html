@@ -1,53 +1,80 @@
 <% include partials/header%>
 <body>
   <div class="container homepage__text">
-    <h1>About Me</h1>
-    <p>
-      I'm a perpetual learner. I love learning new things and exploring new
-      ideas. I never get bored even when reading a SCOTUS statement or an
-      academic essay on grain shipments or the most dry technical documentation.
-    </p>
-    <p>
-      One of the things I love most about programming is that it forces me to
-      <strong>learn by doing</strong>. I can't just read about programming, I
-      have to program. It take me out of my comfort zone in the most delightful
-      way. Programming helps me fail fast and learn and grow from those
-      mistakes.
-    </p>
-    <p>
-      <strong
-        >I'm not scared of asking stupid questions and showing that I don't know
-        it all because that's the only way I'll grow, both as a person and as a
-        developer.</strong
-      >
-    </p>
-    <hr />
+    <br />
+    <h1>Reading List</h1>
     <div class="row">
-      <div class="col-md-6">
-        <h2>Skills</h2>
-        <ul>
-          <li>JavaScript(proficient)</li>
-          <li>NodeJS</li>
-          <li>MongoDB</li>
-          <li>Git</li>
-          <li>CSS</li>
-          <li>Build tools like Gulp, Yarn, and Grunt</li>
+      <div class="col-md-4">
+        <h3>You Don't Know JavaScript</h3>
+        <img
+          src="/assets/images/ydkjs.jpeg"
+          alt="YDKJS"
+          class="homepage-image"
+        />
+      </div>
+      <div class="col-md-8">
+        <p>
+          I like to <strong>really</strong> understand what's going on under the
+          hood of a language. That's what drew me to this series, to really
+          understand what's going on with JavaScript. So far:
+        </p>
+
+        <ul class="checklist">
           <li>
-            Technical Writing
+            <i class="fa fa-check-square-o green" aria-hidden="true"></i> Up &
+            Going
+          </li>
+          <li>
+            <i class="fa fa-check-square-o green" aria-hidden="true"></i> Scope
+            & Closures
+          </li>
+          <li>
+            <i class="fa fa-check-square-o green" aria-hidden="true"></i> this &
+            Object Prototypes
+          </li>
+          <li>
+            <i class="fa fa-square-o" aria-hidden="true"></i> Async &
+            Performance
+          </li>
+          <li>
+            <i class="fa fa-square-o" aria-hidden="true"></i> Types & Grammar
+          </li>
+          <li>
+            <i class="fa fa-square-o" aria-hidden="true"></i> ES6 & Beyond
           </li>
         </ul>
       </div>
-      <div class="col-md-6">
-        <h2>Interests</h2>
-        <ul>
-          <li>Cryptocurrency</li>
-          <li>Cybersecurity</li>
-          <li>Automation</li>
-          <li>Hacking Productivity</li>
-        </ul>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Grokking Algorithms</h3>
+        <img
+          src="/assets/images/grokking_algorithms.jpg"
+          alt="Grokking Algorithms"
+          class="homepage-image"
+        />
+      </div>
+      <div class="col-md-8">
+        <p>
+          One of my long-term goals is to slowly learn the concepts and ideas I
+          would have in a traditional computer science course at a university.
+          Grokking Algorithms by Aditya Y. Bhargava is a great place to start
+          that journey.
+        </p>
       </div>
     </div>
-  </div>
+    <hr />
+    <p>
+      Until I figure out a way to keep track of this and share that publicly
+      with people on Estuary, I'll settle for this
+      <a
+        href="https://docs.google.com/spreadsheets/d/1cAdHuOGTVYe7BNykO-vEfWNLbaoyXNpSAIfFyh30gy0/edit?usp=sharing"
+        target="_blank"
+        >Google Spreadsheet that shows off my progress</a
+      >.
+    </p>
 
-  <% include partials/footer%>
+    <% include partials/footer%>
+  </div>
 </body>

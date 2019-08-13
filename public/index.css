@@ -6,6 +6,11 @@ hr {
   width: 100%;
 }
 
+.contained-img {
+  width: inherit;
+  height: inherit;
+}
+
 .thumbnail {
   text-align: center;
 }
