@@ -9,15 +9,20 @@
     <div class="row">
       <div class="col-md-6">
         <p>
-          My wife and I met <span class="bold"><%= meet %></span> days ago and got
-          married <span class="bold"><%= married %></span> days ago, but it feels
-          like we've known each other our whole lives.
+          <%= userName %> been with <%= soName %> for
+          <span class="bold"><%= userPercent %></span> of their life
+        </p>
+        <p><%= soName %> has been with <%= userName %>
+          for <span class="bold"><%= soPercent %></span> of their life.
         </p>
         <p>
-          However, I've been with Catherine for
-          <span class="bold"><%= charlesPercent %></span> of my life and she's been with me
-          for <span class="bold"><%= catherinePercent %></span> of her life.
+          Met <span class="bold"><%= meet %></span> days ago
         </p>
+        <% if (married) { %>
+        <p>
+          Married <span class="bold"><%= married %></span> days ago
+        </p>
+        <% } %>
       </div>
       <div class="col-md-6">
         <h3>Try it out for yourself!</h3>
