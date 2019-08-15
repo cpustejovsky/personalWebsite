@@ -1,21 +1,63 @@
 <% include partials/header%>
+
 <body>
-<div class="container homepage__text">
-  <h2>
-    Life <i class="fa fa-heart red" aria-hidden="true"></i> Together
-    <i class="fa fa-heart red" aria-hidden="true"></i> Calculator
-  </h2>
-  <div>
-    <p>
-      My wife and I met <span class="bold" id="meeting"></span> days ago and got
-      married <span class="bold" id="married"></span> days ago, but it feels
-      like we've known each other our whole lives.
-    </p>
-    <p>
-      However, I've been with Catherine for
-      <span class="bold" id="charles"></span> of my life and she's been with me
-      for <span class="bold" id="catherine"></span> of her life.
-    </p>
-  </div>
-<script type="text/javascript" src="/assets/scripts/catherineCharlesCalculator.js"></script>
-<% include partials/footer%>
+  <div class="container homepage__text">
+    <h2>
+      Life <i class="fa fa-heart red" aria-hidden="true"></i> Together
+      <i class="fa fa-heart red" aria-hidden="true"></i> Calculator
+    </h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          <%= userName %> been with <%= soName %> for
+          <span class="bold"><%= userPercent %></span> of their life
+        </p>
+        <p><%= soName %> has been with <%= userName %>
+          for <span class="bold"><%= soPercent %></span> of their life.
+        </p>
+        <p>
+          Met <span class="bold"><%= meet %></span> days ago
+        </p>
+        <% if (married) { %>
+        <p>
+          Married <span class="bold"><%= married %></span> days ago
+        </p>
+        <% } %>
+      </div>
+      <div class="col-md-6">
+        <h3>Try it out for yourself!</h3>
+        <hr />
+        <form action="/life-together-calculator" method="post">
+          <div class="form-group">
+            <p>Your Name</p>
+            <input class="form-control" type="text" name="lifeTogether[yourName]" placeholder="Aragorn" required />
+          </div>
+          <div class="form-group">
+            <p>Your Significant Other's Name</p>
+            <input class="form-control" type="text" name="lifeTogether[soName]" placeholder="Arwen" required />
+          </div>
+          <div class="form-group">
+            <p>Your Birthday</p>
+            <input class="form-control" type="date" name="lifeTogether[yourBday]" required />
+          </div>
+          <div class="form-group">
+            <p>Your Significant Other's Birthday</p>
+            <input class="form-control" type="date" name="lifeTogether[soBday]" required />
+          </div>
+          <div class="form-group">
+            <p>Date Y'all Met</p>
+            <input class="form-control" type="date" name="lifeTogether[meetDate]" required />
+          </div>
+          <div class="form-group">
+            <p>Date Y'all Got Marriage (Leave blank if not married)</p>
+            <input class="form-control" type="date" name="lifeTogether[marriedDate]" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <% include partials/footer%>
