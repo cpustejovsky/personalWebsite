@@ -16,8 +16,12 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
-app.use("/life-together-calculator", lifeTogetherRoutes)
+app.get("/*", (req, res) => {
+  console.log("404");
+  res.render("index");
+});
 
 app
   .listen(port, () => {
