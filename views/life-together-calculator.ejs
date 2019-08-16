@@ -2,12 +2,13 @@
 
 <body>
   <div class="container homepage__text">
-    <h2>
+    <h1 style="text-align: center;" >
       Life <i class="fa fa-heart red" aria-hidden="true"></i> Together
       <i class="fa fa-heart red" aria-hidden="true"></i> Calculator
-    </h2>
-    <div class="row">
+    </h1>
+    <div class="row justify-content-md-center">
       <div class="col-md-6">
+        <hr/>
         <p>
           <%= userName %> has been with <%= soName %> for
           <span class="bold"><%= userPercent %></span> of their life
@@ -23,8 +24,7 @@
           Married <span class="bold"><%= married %></span> days ago
         </p>
         <% } %>
-      </div>
-      <div class="col-md-6">
+        <hr />
         <h3>Try it out for yourself!</h3>
         <hr />
         <form action="/life-together-calculator" method="post">
