@@ -17,14 +17,12 @@
           for <span class="bold"><%= soPercent %></span> of their life.
         </p>
         <p>
-          Met <span class="bold"><%= meet %></span> days ago
-        </p>
-        <p>
-          Began dating <span class="bold"><%= dating %></span> days ago
+          We met <span class="bold"><%= meet %></span> days ago and started dating <span
+            class="bold"><%= meet - dating %></span> days later.
         </p>
         <% if (married) { %>
         <p>
-          Married <span class="bold"><%= married %></span> days ago
+          We were married <span class="bold"><%= married %></span> days ago
         </p>
         <% } %>
         <hr />
