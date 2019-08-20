@@ -2,26 +2,27 @@
 
 <body>
   <div class="container homepage__text">
-    <h1 style="text-align: center;" >
+    <h1 style="text-align: center;">
       Life <i class="fa fa-heart red" aria-hidden="true"></i> Together
       <i class="fa fa-heart red" aria-hidden="true"></i> Calculator
     </h1>
     <div class="row justify-content-md-center">
       <div class="col-md-6">
-        <hr/>
+        <hr />
         <p>
-          <%= userName %> has been with <%= soName %> for
+          <%= userName %> has known <%= soName %> for
           <span class="bold"><%= userPercent %></span> of their life
         </p>
-        <p><%= soName %> has been with <%= userName %>
+        <p><%= soName %> has known <%= userName %>
           for <span class="bold"><%= soPercent %></span> of their life.
         </p>
         <p>
-          Met <span class="bold"><%= meet %></span> days ago
+          We met <span class="bold"><%= meet %></span> days ago and started dating <span
+            class="bold"><%= meet - dating %></span> days later.
         </p>
         <% if (married) { %>
         <p>
-          Married <span class="bold"><%= married %></span> days ago
+          We were married <span class="bold"><%= married %></span> days ago
         </p>
         <% } %>
         <hr />
@@ -47,6 +48,10 @@
           <div class="form-group">
             <p>Date Y'all Met</p>
             <input class="form-control" type="date" name="lifeTogether[meetDate]" required />
+          </div>
+          <div class="form-group">
+            <p>Date Y'all Started Dating</p>
+            <input class="form-control" type="date" name="lifeTogether[datingDate]" required />
           </div>
           <div class="form-group">
             <p>Date Y'all Were Married (Leave blank if not married)</p>
