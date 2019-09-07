@@ -3,10 +3,9 @@ const app = express();
 const favicon = require("serve-favicon");
 const moment = require("moment");
 const bodyParser = require("body-parser");
+
 const indexRoutes = require("./routes/index");
 const lifeTogetherRoutes = require("./routes/lifeTogether");
-// const sslRedirect = require("heroku-ssl-redirect");
-
 let port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
@@ -19,7 +18,8 @@ app.use(function(req, res, next) {
   res.locals.today = moment().format("DD MMMM YYYY");
   next();
 });
-// app.use(sslRedirect());
+
+//https://www.npmjs.com/package/heroku-ssl-redirect
 function fixHerokuSSL(environments, status) {
   environments = environments || ["production"];
   status = status || 302;
