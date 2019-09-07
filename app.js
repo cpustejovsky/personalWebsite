@@ -5,6 +5,8 @@ const moment = require("moment");
 const bodyParser = require("body-parser");
 const indexRoutes = require("./routes/index");
 const lifeTogetherRoutes = require("./routes/lifeTogether");
+const sslRedirect = require("heroku-ssl-redirect");
+
 let port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
@@ -17,14 +19,9 @@ app.use(function(req, res, next) {
   res.locals.today = moment().format("DD MMMM YYYY");
   next();
 });
+app.use(sslRedirect());
 app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
-
-app.use((req, res, next) => {
-  if (req.header("x-forwarded-proto") !== "https")
-    res.redirect(`https://${req.header("host")}${req.url}`);
-  else next();
-});
 
 app
   .listen(port, () => {
