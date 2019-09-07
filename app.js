@@ -5,7 +5,7 @@ const moment = require("moment");
 const bodyParser = require("body-parser");
 const indexRoutes = require("./routes/index");
 const lifeTogetherRoutes = require("./routes/lifeTogether");
-const sslRedirect = require("heroku-ssl-redirect");
+// const sslRedirect = require("heroku-ssl-redirect");
 
 let port = process.env.PORT || 3000;
 
@@ -19,7 +19,23 @@ app.use(function(req, res, next) {
   res.locals.today = moment().format("DD MMMM YYYY");
   next();
 });
-app.use(sslRedirect());
+// app.use(sslRedirect());
+function fixHerokuSSL(environments, status) {
+  environments = environments || ["production"];
+  status = status || 302;
+  return function(req, res, next) {
+    if (environments.indexOf(process.env.NODE_ENV) >= 0) {
+      if (req.headers["x-forwarded-proto"] != "https") {
+        res.redirect(status, "https://" + req.hostname + req.originalUrl);
+      } else {
+        next();
+      }
+    } else {
+      next();
+    }
+  };
+}
+app.use(fixHerokuSSL());
 app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
 
