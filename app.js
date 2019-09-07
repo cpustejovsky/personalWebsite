@@ -20,6 +20,14 @@ app.use(function(req, res, next) {
 app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
 
+if (process.env.NODE_ENV === "production") {
+  app.use((req, res, next) => {
+    if (req.header("x-forwarded-proto") !== "https")
+      res.redirect(`https://${req.header("host")}${req.url}`);
+    else next();
+  });
+}
+
 app
   .listen(port, () => {
     console.log(`Personal website listening on port ${port}!`);
