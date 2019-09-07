@@ -3,7 +3,7 @@ const app = express();
 const favicon = require("serve-favicon");
 const moment = require("moment");
 const bodyParser = require("body-parser");
-
+const fixHerokuSSL = require("./middleware/herokuSSL");
 const indexRoutes = require("./routes/index");
 const lifeTogetherRoutes = require("./routes/lifeTogether");
 let port = process.env.PORT || 3000;
@@ -12,29 +12,11 @@ app.set("view engine", "ejs");
 app.use("/assets", express.static(__dirname + "/public"));
 app.use(favicon(__dirname + "/public/images/favicon.ico"));
 app.use("/assets", express.static(__dirname + "/public"));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function(req, res, next) {
   res.locals.today = moment().format("DD MMMM YYYY");
   next();
 });
-
-//https://www.npmjs.com/package/heroku-ssl-redirect
-function fixHerokuSSL(environments, status) {
-  environments = environments || ["production"];
-  status = status || 302;
-  return function(req, res, next) {
-    if (environments.indexOf(process.env.NODE_ENV) >= 0) {
-      if (req.headers["x-forwarded-proto"] != "https") {
-        res.redirect(status, "https://" + req.hostname + req.originalUrl);
-      } else {
-        next();
-      }
-    } else {
-      next();
-    }
-  };
-}
 app.use(fixHerokuSSL());
 app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
