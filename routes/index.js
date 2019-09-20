@@ -11,6 +11,10 @@ router.get("/reading-list", (req, res) => {
   res.render("reading-list");
 });
 
+router.get("/estuary", (req, res) => {
+  res.redirect("https://cpustejovsky-estuary.herokuapp.com/");
+});
+
 router.get("/test-route1", (req, res) => {
   res.send(
     "On August 12th, 2018, I would have been ordained in the Lutheran Church — Missouri Synod if I had stayed on that path. But four and a half years ago, I chose to not go to seminary."
