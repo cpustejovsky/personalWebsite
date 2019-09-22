@@ -28,6 +28,6 @@ app
   .on("error", function helperFunction() {
     port += 1;
     app.listen(port, () => {
-      console.log(`Personale website listening on port ${port}!`);
+      console.log(`Personal website listening on port ${port}!`);
     });
   });
