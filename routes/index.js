@@ -12,7 +12,7 @@ router.get("/reading-list", (req, res) => {
 });
 
 router.get("/estuary", (req, res) => {
-  res.redirect("https://cpustejovsky-estuary.herokuapp.com/");
+  res.send("hit the estuary route! What does it look like? What did it resolve to?");
 });
 
 router.get("/markdown", (req, res) => {
