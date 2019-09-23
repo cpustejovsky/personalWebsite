@@ -1,6 +1,13 @@
 hr {
   border-top: 1px solid #bababa;
 }
+
+.retro-hr {
+  margin: 0px;
+  border-top: 1px solid #00ff00;
+  width: 100%;
+}
+
 .spacer {
   padding-bottom: 7.5%;
   border-top: 0px solid #bababa;
@@ -62,10 +69,7 @@ hr {
   border: 3px solid rebeccapurple;
 }
 /* Markdown Styling*/
-.retro {
-  color: #00ff00;
-  background-color: black;
-}
+
 section,
 .full-height {
   color: #00ff00;
@@ -89,4 +93,16 @@ section,
 #markdown {
   overflow: auto;
   border-left: 1px solid #00ff00;
+}
+
+.retro {
+  color: #00ff00;
+  background-color: black;
+}
+
+.btn-retro {
+  color: #00ff00;
+  background-color: black;
+  border-color: #00ff00;
+  border-radius: 0px;
 }

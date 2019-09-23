@@ -1,14 +1,18 @@
 <% include ./partials/sepPageHeader %>
 <div class="container">
-  <h1 class="text-center">Markdown Scratchpad!</h1>
-  <section class="row">
-    <textarea class="col-md-6 full-height" id="pad">
-Write your text here..</textarea
-    >
-    <div class="col-md-6 full-height" id="markdown"></div>
-  </section>
+  <form action="/markdown.md" method="POST">
+    <div class="text-center row">
+      <h1 class="col-md-6 retro" style="margin-bottom: 0px;">Markdown Scratchpad</h1>
+      <button class="btn btn-retro col-md-6">Save</button>
+    </div>
+    <hr class="retro-hr">
+    <section class="row">
+      <textarea name="markdownContent" class="col-md-6 full-height" style="width:100%" id="pad">Write your text here...</textarea>
+      <div class="col-md-6 full-height" id="markdown"></div>
+    </section>
+  </form>
 </div>
 
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
-<script src="assets/markdown.js"></script>
+<script src="assets/scripts/markdown.js"></script>
 <% include ./partials/footer %>
