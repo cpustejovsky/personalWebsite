@@ -11,10 +11,6 @@ router.get("/reading-list", (req, res) => {
   res.render("reading-list");
 });
 
-router.get("/estuary", (req, res) => {
-  res.send("hit the estuary route! What does it look like? What did it resolve to?");
-});
-
 router.get("/markdown", (req, res) => {
   res.render("markdown");
 });
