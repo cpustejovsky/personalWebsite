@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 
 router.get("/", (req, res) => {
   res.render("index");
@@ -18,17 +17,6 @@ router.get("/estuary", (req, res) => {
 
 router.get("/markdown", (req, res) => {
   res.render("markdown");
-});
-
-router.post("/markdown.md", (req, res) => {
-  let markdownContent = req.body.markdownContent;
-  console.log(markdownContent);
-  fs.writeFile(`tmp/test.md`, markdownContent, (err, data) => {
-    fs.readFile("tmp/test.md", (err, data) => {
-      res.send(data);
-      fs.unlinkSync(`tmp/test.md`);
-    });
-  });
 });
 
 router.get("/test-route1", (req, res) => {
