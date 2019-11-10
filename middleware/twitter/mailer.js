@@ -1,9 +1,23 @@
-/*
-    nodemailer logic similar to that used in estuary project.
-    export function
-    twitterBot will call twitterMailer at a set time which will be handled in app.js
-*/
-
+require("dotenv").config();
 const bot = require("./bot.js");
+const nodemailer = require("nodemailer");
+console.log(bot("FluffyHookers"))
 
-bot.likeAndRetweet("FluffyHookers");
+// async function emailTweets() {
+//
+//     let transporter = nodemailer.createTransport({
+//         service: "gmail",
+//         auth: {
+//             user: process.env.EMAIL,
+//             pass: process.env.EMAIL_PW
+//         }
+//     });
+//     // send mail with defined transport object
+//     let info = await transporter.sendMail({
+//         from: '"Cpustejovsky Twitter Bot" donotreply@cpustejovsky.com',
+//         to: "charles.pustejovsky@gmail.com",
+//         subject: `Tweets from Bishop and Bunners`,
+//         html: "Test test!!!!"
+//     });
+// }
+//  emailTweets();
