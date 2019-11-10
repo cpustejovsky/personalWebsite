@@ -4,6 +4,9 @@ const favicon = require("serve-favicon");
 const moment = require("moment");
 const bodyParser = require("body-parser");
 const fixHerokuSSL = require("./middleware/herokuSSL");
+const schedule = require("node-schedule");
+
+//ROUTES and varibales
 const indexRoutes = require("./routes/index");
 const lifeTogetherRoutes = require("./routes/lifeTogether");
 let port = process.env.PORT || 3000;

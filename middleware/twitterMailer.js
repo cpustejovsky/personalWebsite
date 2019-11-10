@@ -1,0 +1,5 @@
+/*
+    nodemailer logic similar to that used in estuary project.
+    export function
+    twitterBot will call twitterMailer at a set time which will be handled in app.js
+*/
