@@ -3,3 +3,7 @@
     export function
     twitterBot will call twitterMailer at a set time which will be handled in app.js
 */
+
+const bot = require("./bot.js");
+
+bot.likeAndRetweet("FluffyHookers");
