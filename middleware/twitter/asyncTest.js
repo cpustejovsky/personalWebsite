@@ -2,7 +2,7 @@ require("dotenv").config();
 const Twitter = require("twitter");
 const config = require("./config");
 
-function asyncTwitterTest() {
+async function asyncTwitterTest() {
     let T = new Twitter(config);
 
 
@@ -14,14 +14,17 @@ function asyncTwitterTest() {
 
     let tweetArray = [];
 
-    return new Promise((resolve, reject) => {
-        T.get("/statuses/user_timeline", params, (err, data, response) => {
-            if (err) reject(err);
-            resolve(data)
-        })
+    let data = await T.get("/statuses/user_timeline", params, (err, data, response) => {
+        if (err) throw err;
+        else {
+            return data;
+        }
 
     })
 }
 
 asyncTwitterTest()
-    .then((data)=> console.log(data))
+    .then((data) => console.log(data))
+    .catch((err) => {
+        throw err
+    })
