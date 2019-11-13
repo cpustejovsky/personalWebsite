@@ -6,6 +6,27 @@ const config = require("./config");
 
 
 module.exports = {
+    getTwitterData(screenName, count) {
+
+        const params = {
+            screen_name: screenName,
+            count: count,
+            tweet_mode: 'extended'
+        };
+
+        let T = new Twitter(config);
+        return new Promise(resolve => {
+            T.get("/statuses/user_timeline", params, (err, data, response) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(data);
+                }
+            })
+        })
+
+    }
+    ,
     likeAndRetweet(username) {
         let T = new Twitter(config);
 
@@ -48,4 +69,5 @@ module.exports = {
             }
         });
     }
-};
+}
+;
