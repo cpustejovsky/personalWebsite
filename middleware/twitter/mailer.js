@@ -19,24 +19,24 @@ bot.getTwitterData("FluffyHookers", 5)
         tweetData.push(data)
     })
     .then(() => {
-                    console.log(tweetData)
-                    console.log(tweetData[0].tweets)
-                })
-    // .then(() => {
-    //     bot.getTwitterData("Elpidophoros", 8)
-    //         .then((data) => {
-    //             tweetData.push(data)
-    //         })
-    //         .then(() => {
-    //             console.log(tweetData)
-    //             console.log(tweetData[0].tweets)
-    //             console.log(tweetData[1].tweets)
-    //         })
-    //         .then(())
-    //         .catch((err) => {
-    //             throw err
-    //         })
-    // })
+        console.log(tweetData)
+        console.log(tweetData[0].tweets)
+    })
     .catch((err) => {
         throw err
     })
+// .then(() => {
+//     bot.getTwitterData("Elpidophoros", 8)
+//         .then((data) => {
+//             tweetData.push(data)
+//         })
+//         .then(() => {
+//             console.log(tweetData)
+//             console.log(tweetData[0].tweets)
+//             console.log(tweetData[1].tweets)
+//         })
+//         .then(())
+//         .catch((err) => {
+//             throw err
+//         })
+// })
