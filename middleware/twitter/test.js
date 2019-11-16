@@ -12,6 +12,8 @@ function getTwitterData(screenName, count) {
         tweet_mode: 'extended'
     };
 
+
+
     let T = new Twitter(config);
     return new Promise(resolve => {
         T.get("/statuses/user_timeline", params, (err, data, response) => {
