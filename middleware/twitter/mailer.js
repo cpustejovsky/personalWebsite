@@ -8,19 +8,35 @@ const bot = require("./bot.js");
 
 // bot.likeAndRetweet("FluffyHookers");
 
-let nameAndTweets = {
-    name: "",
-    tweets: []
-}
+let tweetData = []
 
-bot.getTwitterData("FluffyHookers", 4)
+// bot.getResponseData("FluffyHookers")
+//     .then((data)=>{console.log(data)})
+
+bot.getTwitterData("FluffyHookers", 5)
     .then((data) => {
-        nameAndTweets.name = data[0].user.name;
-        for (let i = 0; i < data.length; i++) {
-            nameAndTweets.tweets.push(data[i].full_text)
-        }
-        console.log(nameAndTweets)
+        bot.like(data)
+        tweetData.push(data)
     })
+    .then(() => {
+                    console.log(tweetData)
+                    console.log(tweetData[0].tweets)
+                })
+    // .then(() => {
+    //     bot.getTwitterData("Elpidophoros", 8)
+    //         .then((data) => {
+    //             tweetData.push(data)
+    //         })
+    //         .then(() => {
+    //             console.log(tweetData)
+    //             console.log(tweetData[0].tweets)
+    //             console.log(tweetData[1].tweets)
+    //         })
+    //         .then(())
+    //         .catch((err) => {
+    //             throw err
+    //         })
+    // })
     .catch((err) => {
         throw err
     })
