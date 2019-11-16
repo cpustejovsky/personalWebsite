@@ -12,19 +12,20 @@ let tweetData = []
 
 // bot.getResponseData("FluffyHookers")
 //     .then((data)=>{console.log(data)})
-
-bot.getTwitterData("FluffyHookers", 5)
+bot.test()
+bot.getTwitterData("FluffyHookers", 4)
     .then((data) => {
         bot.like(data)
-        tweetData.push(data)
-    })
-    .then(() => {
-        console.log(tweetData)
-        console.log(tweetData[0].tweets)
+        bot.retweet(data)
+        .then(()=>{
+            tweetData.push(data);
+            console.log(tweetData)
+            console.log(tweetData[0].tweets)
+        })
     })
     .catch((err) => {
         throw err
-    })
+    });
 // .then(() => {
 //     bot.getTwitterData("Elpidophoros", 8)
 //         .then((data) => {

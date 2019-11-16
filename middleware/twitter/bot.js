@@ -44,7 +44,6 @@ module.exports = {
                 }
             })
         })
-
     }
     ,
     like(tweetData) {
@@ -55,7 +54,6 @@ module.exports = {
             count: tweetData.tweets.length,
             tweet_mode: 'extended'
         }
-
         for (let i = 0; i < tweetData.tweets.length; i++) {
             let id = {id: tweetData.tweets[i].id}
             T.post(`favorites/create/`, id,function (err, response) {
@@ -74,17 +72,19 @@ module.exports = {
             count: tweetData.tweets.length,
             tweet_mode: 'extended'
         };
-
-        T.post(`statuses/retweet/${id.id}`, function (err, response) {
-            if (err) throw err;
-            else {
-                console.log('Rewtweeted: ', `https://twitter.com/${response.user.screen_name}/status/${id.id}`)
-            }
-        })
+        for (let i = 0; i < tweetData.tweets.length; i++) {
+            let id = {id: tweetData.tweets[i].id}
+            T.post(`statuses/retweet/${id.id}`, function (err, response) {
+                if (err) throw err;
+                else {
+                    console.log('Rewtweeted: ', `https://twitter.com/${response.user.screen_name}/status/${id.id}`)
+                }
+            })
+        }
     },
-    getResponseData() {
+    test() {
         const params = {
-            screen_name: "FluffyHookers",
+            screen_name: "CCPustejovsky",
             count: 1,
             tweet_mode: 'extended'
         };
