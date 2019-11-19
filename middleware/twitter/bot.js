@@ -57,7 +57,11 @@ module.exports = {
         for (let i = 0; i < tweetData.tweets.length; i++) {
             let id = {id: tweetData.tweets[i].id}
             T.post(`favorites/create/`, id,function (err, response) {
-                if (err) throw (err);
+                if (err) console.log(
+                    `${err[0].message}\n`+
+                    `${tweetData.tweets[i].content} found at: `+
+                    `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
+                );
                 else {
                     console.log('Favorited: ', `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}`)
                 }
@@ -75,7 +79,11 @@ module.exports = {
         for (let i = 0; i < tweetData.tweets.length; i++) {
             let id = {id: tweetData.tweets[i].id}
             T.post(`statuses/retweet/${id.id}`, function (err, response) {
-                if (err) throw err;
+                if (err) console.log(
+                    `${err[0].message}\n`+
+                    `${tweetData.tweets[i].content} found at: `+
+                    `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
+                );
                 else {
                     console.log('Rewtweeted: ', `https://twitter.com/${response.user.screen_name}/status/${id.id}`)
                 }
