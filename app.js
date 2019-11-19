@@ -22,17 +22,18 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(fixHerokuSSL());
-app.use(dynoWaker());
 app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
 
 app
   .listen(port, () => {
     console.log(`Personal website listening on port ${port}!`);
+    dynoWaker()
   })
   .on("error", function helperFunction() {
     port += 1;
     app.listen(port, () => {
       console.log(`Personal website listening on port ${port}!`);
+      dynoWaker()
     });
   });
