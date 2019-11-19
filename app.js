@@ -4,6 +4,7 @@ const favicon = require("serve-favicon");
 const moment = require("moment");
 const bodyParser = require("body-parser");
 const fixHerokuSSL = require("./middleware/herokuSSL");
+const dynoWaker = require("./middleware/dynoWaker")
 const schedule = require("node-schedule");
 
 //ROUTES and varibales
@@ -21,6 +22,7 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(fixHerokuSSL());
+app.use(dynoWaker());
 app.use("/life-together-calculator", lifeTogetherRoutes);
 app.use("/", indexRoutes);
 
