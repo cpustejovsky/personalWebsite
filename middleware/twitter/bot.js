@@ -13,7 +13,47 @@ function verifyEngTweet(tweet) {
     return tweet
 }
 
+function matchQeury(tweet, query) {
+    let tweetWords = tweet.full_text.split(" ")
+    for (let i = 0; i < tweetWords.length; i++) {
+        if (tweetWords[i].toUpperCase() === query.toUpperCase()) {
+            return tweet;
+        }
+    }
+}
+
 module.exports = {
+    getSpecificTweets(screenName, query) {
+        const params = {
+            screen_name: screenName,
+            count: 10,
+            tweet_mode: 'extended'
+        };
+
+        let T = new Twitter(config);
+        return new Promise(resolve => {
+            T.get("/statuses/user_timeline", params, (err, data, response) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    let tweetData = {
+                        name: data[0].user.name,
+                        screenName: data[0].user.screen_name,
+                        tweets: []
+                    };
+                    for (let i = 0; i < data.length; i++) {
+                        if(matchQeury(data[i], query)){
+                            tweetData.tweets.push({
+                                content: data[i].full_text,
+                                id: data[i].id_str
+                            });
+                        }
+                    }
+                    resolve(tweetData);
+                }
+            })
+        })
+    },
     getTwitterData(screenName, count) {
         const params = {
             screen_name: screenName,
@@ -93,7 +133,7 @@ module.exports = {
     test() {
         const params = {
             screen_name: "CCPustejovsky",
-            count: 1,
+            count: 2995,
             tweet_mode: 'extended'
         };
         let T = new Twitter(config);
