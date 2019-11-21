@@ -18,18 +18,21 @@ let tweetData = []
 //         }
 //     });
 
-bot.test()
-    .then((data) => {
-        bot.likeTest(data[0].id);
-    });
-// bot.getTwitterData("FluffyHookers", 4)
+// bot.test()
 //     .then((data) => {
-//         bot.like(data)
-//         tweetData.push(data);
-//     })
-//     .catch((err) => {
-//         throw err
+//         // console.log(data)
+//         console.log(data[0].id)
+//         console.log(data[0].id_str)
+//         bot.likeTest(data[0].id_str);
 //     });
+bot.getTwitterData("FluffyHookers", 4)
+    .then((data) => {
+        bot.like(data)
+        tweetData.push(data);
+    })
+    .catch((err) => {
+        throw err
+    });
 //     .then(() => {
 //         bot.getTwitterData("Elpidophoros", 8)
 //             .then((data) => {

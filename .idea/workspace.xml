@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66c09288-6044-4be4-9bd5-141c7348c992" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/middleware/mailer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/twitter/bot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/twitter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/twitterBot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/twitterMailer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/twitter/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/twitter/bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/twitter/mailer.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/twitter/mailer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +34,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$USER_HOME$/.nvm/versions/node/v12.13.0/lib/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
@@ -73,6 +70,8 @@
       <workItem from="1573349435674" duration="2418000" />
       <workItem from="1573393165891" duration="127000" />
       <workItem from="1573419004752" duration="3099000" />
+      <workItem from="1574298445510" duration="4122000" />
+      <workItem from="1574350090231" duration="1343000" />
     </task>
     <servers />
   </component>

@@ -22,24 +22,17 @@ function matchQeury(tweet, query) {
     }
 }
 
-function likeTweet(tweetData, id) {
+function likeTweet(id) {
     let T = new Twitter(config);
 
-    const params = {
-        screen_name: tweetData.screenName,
-        count: tweetData.tweets.length,
-        tweet_mode: 'extended'
-    };
     return new Promise((resolve, reject) => {
         T.post(`favorites/create/`, id, function (err, response) {
             if (err) {
                 reject(
-                    `${err[0].message}\n` +
-                    `${tweetData.tweets[i].content} found at: ` +
-                    `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
+                    `${err[0].message}\n`
                 )
             } else {
-                resolve(`Favorited: https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}`)
+                resolve(`Favorited: https://twitter.com/${response.user.screen_name}/status/${response.id_str}`)
             }
         })
     })
@@ -165,11 +158,11 @@ module.exports = {
     },
     likeTest(twitterID) {
         let T = new Twitter(config);
-        let id = {id: String(twitterID)}
+        let id = {id: (twitterID)}
         T.post(`favorites/create/`, id, function (err, response) {
             if (err) console.log(err)
-             else {
-                 console.log(response)
+            else {
+                console.log(response)
             }
         })
     }
