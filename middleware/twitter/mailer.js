@@ -10,24 +10,26 @@ const bot = require("./bot.js");
 
 let tweetData = []
 
-bot.getSpecificTweets("CCPustejovsky", "Republicans")
-    .then((data)=> {
-        for (let i = 0; i < data.tweets.length; i++) {
-            console.log(data.tweets[i].content)
-        }
-    });
+// bot.getSpecificTweets("CCPustejovsky", "Republicans")
+//     .then((data)=> {
+//         console.log(data);
+//         for (let i = 0; i < data.tweets.length; i++) {
+//             console.log(data.tweets[i].content)
+//         }
+//     });
 
-// bot.test()
-//     .then((data)=>{console.log(data.length)});
+bot.test()
+    .then((data) => {
+        bot.likeTest(data[0].id);
+    });
 // bot.getTwitterData("FluffyHookers", 4)
 //     .then((data) => {
 //         bot.like(data)
-//         bot.retweet(data)
 //         tweetData.push(data);
 //     })
 //     .catch((err) => {
 //         throw err
-//     })
+//     });
 //     .then(() => {
 //         bot.getTwitterData("Elpidophoros", 8)
 //             .then((data) => {

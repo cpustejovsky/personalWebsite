@@ -22,11 +22,34 @@ function matchQeury(tweet, query) {
     }
 }
 
+function likeTweet(tweetData, id) {
+    let T = new Twitter(config);
+
+    const params = {
+        screen_name: tweetData.screenName,
+        count: tweetData.tweets.length,
+        tweet_mode: 'extended'
+    };
+    return new Promise((resolve, reject) => {
+        T.post(`favorites/create/`, id, function (err, response) {
+            if (err) {
+                reject(
+                    `${err[0].message}\n` +
+                    `${tweetData.tweets[i].content} found at: ` +
+                    `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
+                )
+            } else {
+                resolve(`Favorited: https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}`)
+            }
+        })
+    })
+}
+
 module.exports = {
     getSpecificTweets(screenName, query) {
         const params = {
             screen_name: screenName,
-            count: 10,
+            count: 50,
             tweet_mode: 'extended'
         };
 
@@ -42,7 +65,7 @@ module.exports = {
                         tweets: []
                     };
                     for (let i = 0; i < data.length; i++) {
-                        if(matchQeury(data[i], query)){
+                        if (matchQeury(data[i], query)) {
                             tweetData.tweets.push({
                                 content: data[i].full_text,
                                 id: data[i].id_str
@@ -87,26 +110,19 @@ module.exports = {
     }
     ,
     like(tweetData) {
-        let T = new Twitter(config);
-
-        const params = {
-            screen_name: tweetData.screenName,
-            count: tweetData.tweets.length,
-            tweet_mode: 'extended'
-        }
+        let promises = [];
         for (let i = 0; i < tweetData.tweets.length; i++) {
             let id = {id: tweetData.tweets[i].id}
-            T.post(`favorites/create/`, id,function (err, response) {
-                if (err) console.log(
-                    `${err[0].message}\n`+
-                    `${tweetData.tweets[i].content} found at: `+
-                    `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
-                );
-                else {
-                    console.log('Favorited: ', `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}`)
-                }
-            })
+            promises.push(likeTweet(id));
         }
+        Promise.all(promises)
+            .then(() => {
+                console.log("all done!")
+            })
+            .catch((err) => {
+                throw err
+            });
+
     },
     retweet(tweetData) {
         let T = new Twitter(config);
@@ -120,8 +136,8 @@ module.exports = {
             let id = {id: tweetData.tweets[i].id}
             T.post(`statuses/retweet/${id.id}`, function (err, response) {
                 if (err) console.log(
-                    `${err[0].message}\n`+
-                    `${tweetData.tweets[i].content} found at: `+
+                    `${err[0].message}\n` +
+                    `${tweetData.tweets[i].content} found at: ` +
                     `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
                 );
                 else {
@@ -132,8 +148,8 @@ module.exports = {
     },
     test() {
         const params = {
-            screen_name: "CCPustejovsky",
-            count: 2995,
+            screen_name: "FluffyHookers",
+            count: 1,
             tweet_mode: 'extended'
         };
         let T = new Twitter(config);
@@ -145,6 +161,16 @@ module.exports = {
                     resolve(data);
                 }
             })
+        })
+    },
+    likeTest(twitterID) {
+        let T = new Twitter(config);
+        let id = {id: String(twitterID)}
+        T.post(`favorites/create/`, id, function (err, response) {
+            if (err) console.log(err)
+             else {
+                 console.log(response)
+            }
         })
     }
 }
