@@ -3,55 +3,27 @@ const Twitter = require("twitter");
 const config = require("./config");
 
 
+const params = {
+    screen_name: "CCPustejovsky",
+    count: 4,
+    tweet_mode: 'extended'
+};
 
-function getTwitterData(screenName, count) {
+let T = new Twitter(config);
 
-    const params = {
-        screen_name: screenName,
-        count: count,
-        tweet_mode: 'extended'
-    };
-
-
-
-    let T = new Twitter(config);
-    return new Promise(resolve => {
-        T.get("/statuses/user_timeline", params, (err, data, response) => {
-            if (err) {
-                reject(err)
-            } else {
-                resolve(data);
-            }
-        })
-    })
+async function getTweets() {
+    let tweets = await T.get("/statuses/user_timeline", params)
+    return tweets;
 
 }
 
-// async function twitterTest() {
-//
-//     const params = {
-//         screen_name: "FluffyHookers",
-//         count: 4,
-//         tweet_mode: 'extended'
-//     };
-//
-//     const data = await getTwitterData(params);
-//     return data;
-// }
-
-let nameAndTweets = {
-    name: "",
-    tweets: []
-}
-
-getTwitterData("FluffyHookers", 4)
-    .then((data) => {
-        nameAndTweets.name = data[0].user.name;
-        for (let i = 0; i < data.length; i++) {
-            nameAndTweets.tweets.push(data[i].full_text)
+getTweets()
+    .then((spam) => {
+        for (let i = 0; i < spam.length; i++) {
+            console.log(spam[i].full_text)
         }
-        console.log(nameAndTweets)
     })
-    .catch((err) => {
-        throw err
-    })
+    .catch((err)=> console.log(err))
+
+
+
