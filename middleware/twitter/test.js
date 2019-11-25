@@ -12,7 +12,7 @@ const params = {
 let T = new Twitter(config);
 
 async function getTweets() {
-    let tweets = await T.get("/statuses/user_timeline", params)
+    let tweets = await T.get("/statuses/user_timeline", params);
     return tweets;
 
 }
@@ -23,7 +23,7 @@ getTweets()
             console.log(spam[i].full_text)
         }
     })
-    .catch((err)=> console.log(err))
+    .catch((err)=> console.log(err));
 
 
 

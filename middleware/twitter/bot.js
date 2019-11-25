@@ -39,38 +39,34 @@ function likeTweet(id) {
 }
 
 module.exports = {
-    getSpecificTweets(screenName, query) {
+    async getSpecificTweets(screenName, query) {
         const params = {
             screen_name: screenName,
             count: 50,
             tweet_mode: 'extended'
         };
-
         let T = new Twitter(config);
-        return new Promise(resolve => {
-            T.get("/statuses/user_timeline", params, (err, data, response) => {
-                if (err) {
-                    reject(err)
-                } else {
-                    let tweetData = {
-                        name: data[0].user.name,
-                        screenName: data[0].user.screen_name,
-                        tweets: []
-                    };
-                    for (let i = 0; i < data.length; i++) {
-                        if (matchQeury(data[i], query)) {
-                            tweetData.tweets.push({
-                                content: data[i].full_text,
-                                id: data[i].id_str
-                            });
-                        }
-                    }
-                    resolve(tweetData);
+        try {
+            let tweets = await T.get("/statuses/user_timeline", params);
+            let tweetData = {
+                name: tweets[0].user.name,
+                screenName: tweets[0].user.screen_name,
+                tweets: []
+            };
+            for (let i = 0; i < tweets.length; i++) {
+                if (matchQeury(tweets[i], query)) {
+                    tweetData.tweets.push({
+                        content: tweets[i].full_text,
+                        id: tweets[i].id_str
+                    });
                 }
-            })
-        })
+            }
+            return tweetData;
+        } catch (err) {
+            console.log(err);
+        }
     },
-    getTwitterData(screenName, count) {
+    async getTwitterData(screenName, count) {
         const params = {
             screen_name: screenName,
             count: count,
@@ -78,30 +74,26 @@ module.exports = {
         };
 
         let T = new Twitter(config);
-        return new Promise(resolve => {
-            T.get("/statuses/user_timeline", params, (err, data, response) => {
-                if (err) {
-                    reject(err)
-                } else {
-                    let tweetData = {
-                        name: data[0].user.name,
-                        screenName: data[0].user.screen_name,
-                        tweets: []
-                    };
-                    for (let i = 0; i < data.length; i++) {
-                        if (verifyEngTweet(data[i])) {
-                            tweetData.tweets.push({
-                                content: data[i].full_text,
-                                id: data[i].id_str
-                            });
-                        }
-                    }
-                    resolve(tweetData);
+        try {
+            let data = await T.get("/statuses/user_timeline", params);
+            let tweetData = {
+                name: data[0].user.name,
+                screenName: data[0].user.screen_name,
+                tweets: []
+            };
+            for (let i = 0; i < data.length; i++) {
+                if (verifyEngTweet(data[i])) {
+                    tweetData.tweets.push({
+                        content: data[i].full_text,
+                        id: data[i].id_str
+                    });
                 }
-            })
-        })
-    }
-    ,
+            }
+            return (tweetData);
+        } catch (e) {
+            console.log(e);
+        }
+    },
     like(tweetData) {
         let promises = [];
         for (let i = 0; i < tweetData.tweets.length; i++) {
