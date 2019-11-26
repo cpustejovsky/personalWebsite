@@ -77,10 +77,11 @@ module.exports = {
         try {
             let T = new Twitter(config);
             let id = {id: tweet.id};
-            let response = await  T.post(`statuses/retweet/${id.id}`);
-            return (`Rewtweeted: https://twitter.com/${response.user.screen_name}/status/${id.id}`)
+            await  T.post(`statuses/retweet/`, id);
+            tweet.retweeted = true;
+            return tweet;
         } catch (err) {
-            return (err[0].message)
+            return (err)
         }
     },
     async search(screenName, query) {
