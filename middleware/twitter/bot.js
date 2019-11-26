@@ -77,6 +77,11 @@ module.exports = {
         try {
             let T = new Twitter(config);
             let id = {id: tweet.id};
+            await T.post(`favorites/create/`, id);
+            tweet.retweeted = true;
+            return tweet;
+            let T = new Twitter(config);
+            let id = {id: tweet.id};
             let response = await  T.post(`statuses/retweet/${id.id}`);
             return (`Rewtweeted: https://twitter.com/${response.user.screen_name}/status/${id.id}`)
         } catch (err) {
