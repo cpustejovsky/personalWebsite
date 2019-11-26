@@ -22,24 +22,68 @@ function matchQeury(tweet, query) {
     }
 }
 
-function likeTweet(id) {
-    let T = new Twitter(config);
-
-    return new Promise((resolve, reject) => {
-        T.post(`favorites/create/`, id, function (err, response) {
-            if (err) {
-                reject(
-                    `${err[0].message}\n`
-                )
-            } else {
-                resolve(`Favorited: https://twitter.com/${response.user.screen_name}/status/${response.id_str}`)
-            }
-        })
-    })
-}
-
 module.exports = {
-    async getSpecificTweets(screenName, query) {
+    async getTwitterData(screenName, count) {
+        const params = {
+            screen_name: screenName,
+            count: count,
+            tweet_mode: 'extended'
+        };
+
+        let T = new Twitter(config);
+        try {
+            let data = await T.get("/statuses/user_timeline", params);
+            let tweetData = {
+                name: data[0].user.name,
+                screenName: data[0].user.screen_name,
+                tweets: []
+            };
+            for (let i = 0; i < data.length; i++) {
+                if (verifyEngTweet(data[i])) {
+                    tweetData.tweets.push({
+                        content: data[i].full_text,
+                        id: data[i].id_str,
+                        url: `https://twitter.com/${tweetData.screenName}/status/${data[i].id_str}`,
+                        liked: false,
+                        retweeted: false
+                    });
+                }
+            }
+            return (tweetData);
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    async like(tweet) {
+        try {
+            let T = new Twitter(config);
+            let id = {id: tweet.id};
+            await T.post(`favorites/create/`, id);
+            tweet.liked = true;
+            return tweet;
+        } catch (err) {
+            if (err[0].message === "You have already favorited this status.") {
+                tweet.liked = true;
+                return tweet;
+            }
+            else {
+                tweet.liked = err[0].message;
+                return tweet;
+            }
+        }
+
+    },
+    async retweet(tweet) {
+        try {
+            let T = new Twitter(config);
+            let id = {id: tweet.id};
+            let response = await  T.post(`statuses/retweet/${id.id}`);
+            return (`Rewtweeted: https://twitter.com/${response.user.screen_name}/status/${id.id}`)
+        } catch (err) {
+            return (err[0].message)
+        }
+    },
+    async search(screenName, query) {
         const params = {
             screen_name: screenName,
             count: 50,
@@ -65,95 +109,6 @@ module.exports = {
         } catch (err) {
             console.log(err);
         }
-    },
-    async getTwitterData(screenName, count) {
-        const params = {
-            screen_name: screenName,
-            count: count,
-            tweet_mode: 'extended'
-        };
-
-        let T = new Twitter(config);
-        try {
-            let data = await T.get("/statuses/user_timeline", params);
-            let tweetData = {
-                name: data[0].user.name,
-                screenName: data[0].user.screen_name,
-                tweets: []
-            };
-            for (let i = 0; i < data.length; i++) {
-                if (verifyEngTweet(data[i])) {
-                    tweetData.tweets.push({
-                        content: data[i].full_text,
-                        id: data[i].id_str
-                    });
-                }
-            }
-            return (tweetData);
-        } catch (e) {
-            console.log(e);
-        }
-    },
-    async like(tweetId) {
-        try {
-            let T = new Twitter(config);
-            let id = {id: tweetId};
-            let response = await T.post(`favorites/create/`, id);
-            return (`Favorited: https://twitter.com/${response.user.screen_name}/status/${response.id_str}`)
-        } catch (err) {
-            console.log("OOPS!")
-            console.log(err);
-        }
-
-    },
-    retweet(tweetData) {
-        let T = new Twitter(config);
-
-        const params = {
-            screen_name: tweetData.screenName,
-            count: tweetData.tweets.length,
-            tweet_mode: 'extended'
-        };
-        for (let i = 0; i < tweetData.tweets.length; i++) {
-            let id = {id: tweetData.tweets[i].id}
-            T.post(`statuses/retweet/${id.id}`, function (err, response) {
-                if (err) console.log(
-                    `${err[0].message}\n` +
-                    `${tweetData.tweets[i].content} found at: ` +
-                    `https://twitter.com/${tweetData.screenName}/status/${tweetData.tweets[i].id}\n`
-                );
-                else {
-                    console.log('Rewtweeted: ', `https://twitter.com/${response.user.screen_name}/status/${id.id}`)
-                }
-            })
-        }
-    },
-    test() {
-        const params = {
-            screen_name: "FluffyHookers",
-            count: 1,
-            tweet_mode: 'extended'
-        };
-        let T = new Twitter(config);
-        return new Promise(resolve => {
-            T.get("/statuses/user_timeline", params, (err, data, response) => {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve(data);
-                }
-            })
-        })
-    },
-    likeTest(twitterID) {
-        let T = new Twitter(config);
-        let id = {id: (twitterID)}
-        T.post(`favorites/create/`, id, function (err, response) {
-            if (err) console.log(err)
-            else {
-                console.log(response)
-            }
-        })
     }
 }
 ;

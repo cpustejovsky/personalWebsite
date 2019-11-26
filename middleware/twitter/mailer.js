@@ -6,18 +6,19 @@
 
 const bot = require("./bot.js");
 
-let tweetData = []
+let completeTweets = []
 
-// bot.getSpecificTweets("CCPustejovsky", "advocate")
+// bot.search("CCPustejovsky", "advocate")
 //     .then((data)=> {
 //         console.log(data);
 //     });
 
-bot.getTwitterData("CCPustejovsky", 5)
-    .then((data)=> {
+bot.getTwitterData("CCPustejovsky", 2)
+    .then(async (data)=> {
         for (let i = 0; i < data.tweets.length; i++) {
-            console.log(data.tweets[i].content)
-            bot.like(data.tweets[i].id)
+            let likedTweet = await bot.like(data.tweets[i])
+            completeTweets.push(likedTweet);
         }
+        console.log(completeTweets)
     });
 
