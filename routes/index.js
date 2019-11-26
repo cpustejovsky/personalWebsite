@@ -15,6 +15,10 @@ router.get("/markdown", (req, res) => {
   res.render("markdown");
 });
 
+router.get("/resources", (req, res)=> {
+  res.render("resources")
+});
+
 router.get("/test-route1", (req, res) => {
   res.send(
     "On August 12th, 2018, I would have been ordained in the Lutheran Church — Missouri Synod if I had stayed on that path. But four and a half years ago, I chose to not go to seminary."

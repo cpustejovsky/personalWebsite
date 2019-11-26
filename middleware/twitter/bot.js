@@ -4,7 +4,7 @@ const config = require("./config");
 
 //TODO: create object with name/username and an array of tweets; push tweets that have been liked and retweeted into array
 
-function verifyEngTweet(tweet) {
+function notGreek(tweet) {
     for (let j = 0; j < tweet.full_text.length; j++) {
         if (tweet.full_text.charCodeAt(j) >= 945 && tweet.full_text.charCodeAt(j) <= 1023) {
             return false;
@@ -39,7 +39,7 @@ module.exports = {
                 tweets: []
             };
             for (let i = 0; i < data.length; i++) {
-                if (verifyEngTweet(data[i])) {
+                if (notGreek(data[i])) {
                     tweetData.tweets.push({
                         content: data[i].full_text,
                         id: data[i].id_str,
@@ -77,15 +77,11 @@ module.exports = {
         try {
             let T = new Twitter(config);
             let id = {id: tweet.id};
-            await T.post(`favorites/create/`, id);
+            await  T.post(`statuses/retweet/`, id);
             tweet.retweeted = true;
             return tweet;
-            let T = new Twitter(config);
-            let id = {id: tweet.id};
-            let response = await  T.post(`statuses/retweet/${id.id}`);
-            return (`Rewtweeted: https://twitter.com/${response.user.screen_name}/status/${id.id}`)
         } catch (err) {
-            return (err[0].message)
+            return (err)
         }
     },
     async search(screenName, query) {
