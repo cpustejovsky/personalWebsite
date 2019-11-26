@@ -8,15 +8,16 @@ const bot = require("./bot.js");
 
 let tweetData = []
 
-bot.getSpecificTweets("CCPustejovsky", "advocate")
-    .then((data)=> {
-        console.log(data);
-    });
+// bot.getSpecificTweets("CCPustejovsky", "advocate")
+//     .then((data)=> {
+//         console.log(data);
+//     });
 
 bot.getTwitterData("CCPustejovsky", 5)
     .then((data)=> {
         for (let i = 0; i < data.tweets.length; i++) {
             console.log(data.tweets[i].content)
+            bot.like(data.tweets[i].id)
         }
     });
 

@@ -94,19 +94,16 @@ module.exports = {
             console.log(e);
         }
     },
-    like(tweetData) {
-        let promises = [];
-        for (let i = 0; i < tweetData.tweets.length; i++) {
-            let id = {id: tweetData.tweets[i].id}
-            promises.push(likeTweet(id));
+    async like(tweetId) {
+        try {
+            let T = new Twitter(config);
+            let id = {id: tweetId};
+            let response = await T.post(`favorites/create/`, id);
+            return (`Favorited: https://twitter.com/${response.user.screen_name}/status/${response.id_str}`)
+        } catch (err) {
+            console.log("OOPS!")
+            console.log(err);
         }
-        Promise.all(promises)
-            .then(() => {
-                console.log("all done!")
-            })
-            .catch((err) => {
-                throw err
-            });
 
     },
     retweet(tweetData) {

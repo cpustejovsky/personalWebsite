@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/twitter/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/twitter/bot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/twitter/mailer.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/twitter/mailer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
