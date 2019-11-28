@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66c09288-6044-4be4-9bd5-141c7348c992" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../middleware/twitter/bot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../middleware/twitter/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../middleware/twitter/mailer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../middleware/mailer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +22,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1TP6YvHhIFewe8Vqtt1uRjDMztz" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -31,28 +34,25 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v12.13.0/bin/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$USER_HOME$/.nvm/versions/node/v12.13.0/lib/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../../middleware" />
+      <recent name="$PROJECT_DIR$/../../middleware/twitter" />
+      <recent name="$PROJECT_DIR$/../.." />
       <recent name="$PROJECT_DIR$/middleware" />
       <recent name="$PROJECT_DIR$/twitter" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -82,7 +82,7 @@
       <workItem from="1573419004752" duration="3099000" />
       <workItem from="1574298445510" duration="4122000" />
       <workItem from="1574350090231" duration="1343000" />
-      <workItem from="1574788997102" duration="6385000" />
+      <workItem from="1574727148425" duration="17207000" />
     </task>
     <servers />
   </component>
@@ -103,9 +103,17 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="160" key="SettingsEditor" timestamp="1574790105167">
-      <screen x="0" y="27" width="1920" height="1006" />
+    <state x="2594" y="691" width="561" height="392" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1574728841672">
+      <screen x="1920" y="362" width="1920" height="1080" />
     </state>
-    <state x="440" y="160" key="SettingsEditor/0.27.1920.1006@0.27.1920.1006" timestamp="1574790105167" />
+    <state x="2594" y="691" width="561" height="392" key="#com.intellij.fileTypes.FileTypeChooser/1920.362.1920.1080/0.389.1920.1053/3840.0.1080.1920@1920.362.1920.1080" timestamp="1574728841672" />
+    <state x="2020" y="432" width="1720" height="910" key="DiffContextDialog" timestamp="1574802433809">
+      <screen x="1920" y="362" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="432" width="1720" height="910" key="DiffContextDialog/1920.362.1920.1080/0.389.1920.1053/3840.0.1080.1920@0.389.1920.1053" timestamp="1574802433809" />
+    <state x="1328" y="602" width="582" height="569" key="MultipleFileMergeDialog" timestamp="1574802445649">
+      <screen x="0" y="389" width="1920" height="1053" />
+    </state>
+    <state x="1328" y="602" width="582" height="569" key="MultipleFileMergeDialog/1920.362.1920.1080/0.389.1920.1053/3840.0.1080.1920@0.389.1920.1053" timestamp="1574802445649" />
   </component>
 </project>
