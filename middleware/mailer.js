@@ -1,6 +1,6 @@
-const bot = require("./bot.js");
+require("dotenv").config({ path: "../.env"});
+const bot = require("cpustejovsky-twitter-bot");
 const nodemailer = require("nodemailer");
-require("dotenv").config();
 //TODO: Try and move these functions in bot.js
 //TODO: Add in cron functionality and run at same time as my notes and the dynoWaker
 async function likeAndRetweet(tweetData) {
@@ -45,5 +45,5 @@ bot.getTwitterData("CCPustejovsky", 2)
     .then(async (data) => {
         let likedAndRetweeted = await likeAndRetweet(data);
         console.log(likedAndRetweeted)
-        emailTweets("cpustejovsky@bitpay.com", likedAndRetweeted);
+        // emailTweets("cpustejovsky@bitpay.com", likedAndRetweeted);
     });
