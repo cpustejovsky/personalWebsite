@@ -54,4 +54,4 @@ const cronEmailUpdate = () => {
     }
 };
 
-module.exports = cronEmailUpdate();
+module.exports = cronEmailUpdate;
