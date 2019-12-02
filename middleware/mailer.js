@@ -46,11 +46,11 @@ function tweetEmailUpdate(screenName, count, email) {
 
 const cronEmailUpdate = () => {
     let now = moment();
-    if (now.hours() === 12 && (now.minutes() <= 0 || now.minutes() >= 2) && now.format("A") === "PM") {
+    if (now.hours() === 1 && (now.minutes() <= 0 || now.minutes() >= 2) && now.format("A") === "PM") {
         tweetEmailUpdate("FluffyHookers", 10, "charles.pustejovsky@gmail.com");
         tweetEmailUpdate("Elpidophoros", 10, "charles.pustejovsky@gmail.com");
     } else {
-        setTimeout(dynoWaker, 1000 * 60);
+        setTimeout(cronEmailUpdate, 1000 * 60);
     }
 };
 
