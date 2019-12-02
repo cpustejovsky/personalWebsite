@@ -4,7 +4,8 @@ const favicon = require("serve-favicon");
 const moment = require("moment");
 const bodyParser = require("body-parser");
 const fixHerokuSSL = require("./middleware/herokuSSL");
-const dynoWaker = require("./middleware/dynoWaker")
+const dynoWaker = require("./middleware/dynoWaker");
+const twitterEmailUpdate = require("./middleware/mailer");
 const schedule = require("node-schedule");
 
 //ROUTES and varibales
@@ -28,12 +29,14 @@ app.use("/", indexRoutes);
 app
   .listen(port, () => {
     console.log(`Personal website listening on port ${port}!`);
-    dynoWaker()
+    dynoWaker();
+    twitterEmailUpdate();
   })
   .on("error", function helperFunction() {
     port += 1;
     app.listen(port, () => {
       console.log(`Personal website listening on port ${port}!`);
-      dynoWaker()
+      dynoWaker();
+      twitterEmailUpdate();
     });
   });
