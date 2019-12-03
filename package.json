@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "cpustejovsky-twitter-bot": "^1.1.2",
+    "cpustejovsky-twitter-bot": "^1.2.1",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",

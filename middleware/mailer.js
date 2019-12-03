@@ -46,7 +46,7 @@ function tweetEmailUpdate(screenName, count, email) {
 
 const cronEmailUpdate = () => {
     let now = moment();
-    if (now.hours() === 13 && (now.minutes() <= 15 || now.minutes() >= 16) && now.format("A") === "PM") {
+    if (now.hours() === 14 && (now.minutes() <= 5 || now.minutes() >= 6) && now.format("A") === "PM") {
         tweetEmailUpdate("FluffyHookers", 10, "charles.pustejovsky@gmail.com");
         tweetEmailUpdate("Elpidophoros", 10, "charles.pustejovsky@gmail.com");
     } else {
