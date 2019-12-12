@@ -17,7 +17,7 @@ async function emailTweets(emailAddress, data) {
     tweetContent += `<h3>Tweets from ${data.screenName}</h3>`;
     tweetContent += `<ul>`;
     data.tweets.forEach((tweet) => {
-        tweetContent += `<li>${tweet.content}</li>`;
+        tweetContent += `<li>${tweet.content}\n${tweet.url}</li>`;
     });
     tweetContent += `</ul>`;
     // send mail with defined transport object
