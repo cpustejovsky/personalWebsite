@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const fs = require('fs');
 router.get("/", (req, res) => {
   res.render("index");
 });
@@ -15,7 +15,7 @@ router.get("/markdown", (req, res) => {
   res.render("markdown");
 });
 
-router.get("/resources", (req, res)=> {
+router.get("/resources", (req, res) => {
   res.render("resources")
 });
 
@@ -35,6 +35,11 @@ router.get("/test-route3", (req, res) => {
   res.send(
     "I can spend hours coding or learning about development without getting bored. My frustrations increase my resolve and determination to find a solution. My wife will tell me, “come to bed” and I’ll respond “just a few more minutes.” The only thing that has ever done that for me is… video games. Programming is the only thing I’ve found that competes with video games for my attention."
   );
+});
+
+router.get("/bp-json", (req, res) => {
+  const data = fs.readFileSync("./potsherd/downloads/result.json", "utf8")
+  res.send(data)
 });
 
 module.exports = router;
