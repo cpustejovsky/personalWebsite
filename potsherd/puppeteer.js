@@ -28,6 +28,7 @@ const getMarketCapsObj = async () => {
     ETH: await checkMarketCap("ethereum"),
     XRP: await checkMarketCap("xrp"),
     BCH: await checkMarketCap("bitcoin-cash"),
+    BSV: await checkMarketCap("bitcoin-sv")
   }
   fs.writeFileSync('downloads/result.json', JSON.stringify(marketCap), 'utf8')
   console.log(marketCap)
