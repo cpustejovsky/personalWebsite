@@ -50,7 +50,6 @@ const cronEmailUpdate = () => {
         tweetEmailUpdate("FluffyHookers", 10, "charles.pustejovsky@gmail.com");
         tweetEmailUpdate("Elpidophoros", 10, "charles.pustejovsky@gmail.com");
     } else {
-        console.log(`${now.hours()}:${now.minute()} ${now.format("A")}`)
         setTimeout(cronEmailUpdate, 1000 * 60);
     }
 };
