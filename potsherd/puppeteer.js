@@ -22,17 +22,23 @@ const checkTotalMarketCap = async () => {
   return Number(result.replace(/\W|USD/g, ''));
 };
 const getMarketCapsObj = async () => {
-  const marketCap = {
-    total: await checkTotalMarketCap(),
-    BTC: await checkMarketCap("bitcoin"),
-    ETH: await checkMarketCap("ethereum"),
-    XRP: await checkMarketCap("xrp"),
-    BCH: await checkMarketCap("bitcoin-cash"),
-    BSV: await checkMarketCap("bitcoin-sv")
+  try {
+    const marketCap = {
+      total: await checkTotalMarketCap(),
+      BTC: await checkMarketCap("bitcoin"),
+      ETH: await checkMarketCap("ethereum"),
+      XRP: await checkMarketCap("xrp"),
+      BCH: await checkMarketCap("bitcoin-cash"),
+      BSV: await checkMarketCap("bitcoin-sv")
+    }
+    fs.writeFileSync('downloads/result.json', JSON.stringify(marketCap), 'utf8')
+    console.log(marketCap)
+    process.exit(0)
+  } catch (error) {
+    console.warn(error);
+    process.exit(1)
   }
-  fs.writeFileSync('downloads/result.json', JSON.stringify(marketCap), 'utf8')
-  console.log(marketCap)
-  process.exit(1)
+
 }
 getMarketCapsObj();
 
