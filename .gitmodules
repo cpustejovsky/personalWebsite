@@ -1,0 +1,3 @@
+[submodule "potsherd"]
+	path = potsherd
+	url = git@github.com:cpustejovsky/potsherd.git
